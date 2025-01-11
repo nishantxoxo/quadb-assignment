@@ -13,16 +13,21 @@ class Movieprovider with ChangeNotifier {
   }     
   
   List<moviesModel> get searchedmovies {
-    return [..._movies];
+    return [..._searchedMovies];
   }  
 
   Future<void> fetchAndSet() async {                                        
     final url = 'https://api.tvmaze.com/search/shows?q=all';
     try {
-      final Response = await http.get(Uri.parse(url));                       //fetch the data with a GET request
-      final extracted = json.decode(Response.body) as List<dynamic>;                  
-      final List<moviesModel> loadedMovies = [];                                 
+      final Response = await http.get(Uri.parse(url));   
+           
+      final extracted = json.decode(Response.body) as List<dynamic>;       
+              
+      
+      final List<moviesModel> loadedMovies = [];     
+
       extracted.forEach(
+   
         (element) {
           loadedMovies.add(moviesModel.fromJson(element));
         },
@@ -37,8 +42,9 @@ class Movieprovider with ChangeNotifier {
 
   Future<void> searchMovie(String query) async {                                
     final url = 'https://api.tvmaze.com/search/shows?q=$query';
+  
     try {
-      final Response = await http.get(Uri.parse(url));                       //fetch the data with a GET request
+      final Response = await http.get(Uri.parse(url));                      
       final extracted = json.decode(Response.body) as List<dynamic>;                  
       final List<moviesModel> loadedSearchedMovies = [];                                 
       extracted.forEach(
@@ -47,7 +53,8 @@ class Movieprovider with ChangeNotifier {
         },
       );
 
-      _searchedMovies = loadedSearchedMovies;                                         
+      _searchedMovies = loadedSearchedMovies;      
+      notifyListeners();                                   
     } catch (e) {
       throw e;
     } 

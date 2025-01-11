@@ -42,7 +42,7 @@ class _BottomnavbarState extends State<Bottomnavbar> {
             label: 'Search',
           ),
         ],
-        selectedItemColor: Colors.blue,
+        selectedItemColor: Colors.red,
         unselectedItemColor: Colors.grey,
       ),
     );

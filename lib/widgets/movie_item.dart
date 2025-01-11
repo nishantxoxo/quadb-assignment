@@ -13,24 +13,30 @@ class MovieItem extends StatelessWidget {
     final movie = Provider.of<moviesModel>(context);
     return Card(
       elevation: 4,
-      child: Column(
+      child: Column(mainAxisAlignment: MainAxisAlignment.center ,
+      crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          CachedNetworkImage(
-            errorWidget: (context, url, error) => Icon(
-              Icons.error_outline,
-              color: Colors.red,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: CachedNetworkImage(
+              errorWidget: (context, url, error) => Icon(
+                Icons.error_outline,
+                color: Colors.red,
+              ),
+              placeholder: (context, url) => SpinKitFadingCircle(
+                color: Colors.red,
+                size: 50,
+              ),
+              fit: BoxFit.cover,
+              imageUrl: movie.show?.image?.medium?.toString() ?? "" ,
             ),
-            placeholder: (context, url) => SpinKitFadingCircle(
-              color: Colors.red,
-              size: 50,
-            ),
-            fit: BoxFit.cover,
-            imageUrl: movie.show!.image!.medium.toString(),
           ),
-          Text(
-            movie.show!.name!,
+          Text( 
+           movie.show!.name! ,
+           overflow: TextOverflow.ellipsis,
             style: GoogleFonts.poppins(
               fontSize: 13,
+              
             ),
           )
         ],
