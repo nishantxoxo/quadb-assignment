@@ -38,13 +38,13 @@ class _SplashscreenState extends State<Splashscreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              "assets/splash_pic.jpg",
+              "assets/splash_pic1.jpg",
               fit: BoxFit.cover,
               width: width * 0.9,
               height: height * 0.5,
             ),
             SizedBox(height: height * 0.04,),
-            Text("MOVIES", style: GoogleFonts.anton(letterSpacing: .6, color: Colors.grey),),
+            // Text("MOVIES", style: GoogleFonts.anton(letterSpacing: .6, color: Colors.grey, fontSize: 20),),
             SizedBox(height: height * 0.04,),
             SpinKitChasingDots(
               color: Colors.red,

@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => Movieprovider(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'quadb assignment',
         theme: ThemeData.dark(
          

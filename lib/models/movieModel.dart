@@ -39,7 +39,7 @@ class Show {
     rating =
         json['rating'] != null ? new Rating.fromJson(json['rating']) : null;
     image = json['image'] != null ? new Image.fromJson(json['image']) : null;
-    summary = json['summary'];
+    summary = json['summary'].toString();
   }
 
   Map<String, dynamic> toJson() {
@@ -58,12 +58,12 @@ class Show {
 }
 
 class Rating {
-  int? average;
+  String? average;
 
   Rating({this.average});
 
   Rating.fromJson(Map<String, dynamic> json) {
-    average = int.parse(json['average']);
+    average = json['average'].toString();
   }
 
   Map<String, dynamic> toJson() {
